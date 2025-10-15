@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JHR ESPORTS</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <canvas id="particles"></canvas>
+  <header class="header">
+    <div class="logo">
+      <img src="logo.png" alt="JHR ESPORTS" />
+      <h1>JHR <span>ESPORTS</span></h1>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#team">Team</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#tournaments">Tournaments</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <section id="home" class="home">
+    <div class="overlay">
+      <h2>WELCOME TO</h2>
+      <h1>JHR <span>ESPORTS</span></h1>
+      <p>Play • Conquer • Dominate</p>
+      <a href="#about" class="btn">Enter Arena</a>
+    </div>
+  </section>
+  <section id="about" class="about">
+    <h2>About Us</h2>
+    <p>JHR Esports is a powerhouse in the competitive gaming world.  
+    We stand for teamwork, passion, and excellence.  
+    Join us as we redefine the esports battleground.</p>
+  </section>
+  <section id="team" class="team">
+    <h2>Our Squad</h2>
+    <div class="team-container">
+      <div class="member"><img src="https://via.placeholder.com/200" alt="Player 1"><h3>Player One</h3><p>Leader / Assault</p></div>
+      <div class="member"><img src="https://via.placeholder.com/200" alt="Player 2"><h3>Player Two</h3><p>Sniper</p></div>
+      <div class="member"><img src="https://via.placeholder.com/200" alt="Player 3"><h3>Player Three</h3><p>Support</p></div>
+    </div>
+  </section>
+  <section id="gallery" class="gallery">
+    <h2>Gallery</h2>
+    <div class="gallery-grid">
+      <img src="https://via.placeholder.com/400x250" alt="Gallery 1">
+      <img src="https://via.placeholder.com/400x250" alt="Gallery 2">
+      <img src="https://via.placeholder.com/400x250" alt="Gallery 3">
+      <img src="https://via.placeholder.com/400x250" alt="Gallery 4">
+      <img src="https://via.placeholder.com/400x250" alt="Gallery 5">
+      <img src="https://via.placeholder.com/400x250" alt="Gallery 6">
+    </div>
+  </section>
+  <section id="tournaments" class="tournaments">
+    <h2>Tournament Results</h2>
+    <table>
+      <thead><tr><th>Rank</th><th>Team</th><th>Points</th><th>Event</th><th>Date</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>JHR ESPORTS</td><td>250</td><td>Pro League Finals</td><td>Sep 2025</td></tr>
+        <tr><td>2</td><td>Team Shadow</td><td>210</td><td>Battle Masters</td><td>Aug 2025</td></tr>
+        <tr><td>3</td><td>Nova Core</td><td>190</td><td>Fire Cup</td><td>Jul 2025</td></tr>
+      </tbody>
+    </table>
+  </section>
+  <section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Interested in joining or collaborating? Let’s connect!</p>
+    <a href="mailto:jhresports@email.com" class="btn">Send Message</a>
+  </section>
+  <footer class="footer"><p>© 2025 JHR ESPORTS | All Rights Reserved</p></footer>
+  <script>
+  const c=document.getElementById("particles"),ctx=c.getContext("2d");
+  let pArr; c.width=window.innerWidth; c.height=window.innerHeight;
+  const colors=["#ff0000","#ffffff","#e60000","#ff4040"];
+  class P{constructor(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.s=Math.random()*2+1;this.sx=Math.random()*1-0.5;this.sy=Math.random()*1-0.5;this.color=colors[Math.floor(Math.random()*colors.length)];}
+  u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>c.width)this.sx*=-1;if(this.y<0||this.y>c.height)this.sy*=-1;}
+  d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=this.color;ctx.shadowBlur=20;ctx.shadowColor=this.color;ctx.fill();}}
+  function init(){pArr=[];for(let i=0;i<120;i++)pArr.push(new P());}
+  function anim(){ctx.clearRect(0,0,c.width,c.height);pArr.forEach(p=>{p.u();p.d();});requestAnimationFrame(anim);}
+  init();anim();window.addEventListener("resize",()=>{c.width=window.innerWidth;c.height=window.innerHeight;init();});
+  </script>
+</body></html>

